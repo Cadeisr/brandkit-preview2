@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Brand Kit Preview</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+</head>
+<body>
+  <div class="container">
+    <section class="sidebar">
+      <h1>Customize Your Brand</h1>
+      <label for="brandName">Brand name</label>
+      <input type="text" id="brandName" placeholder="e.g. Twenty Concepts"/>
+      <label for="tagline">Tagline</label>
+      <input type="text" id="tagline" placeholder="e.g. Glow naturally"/>
+      <label for="colorPicker">Brand color</label>
+      <div id="colorPicker"></div>
+      <button id="updateBtn">Update</button>
+    </section>
+    <section class="preview">
+      <div class="card" id="logoCard">
+        <div class="brand-name" id="previewBrand">Your Brand</div>
+        <div class="brand-tagline" id="previewTagline">Your tagline</div>
+      </div>
+      <div class="card" id="fontCard">
+        <div class="font-sample">T</div>
+        <div class="brand-tagline" id="previewFontTag">Your tagline</div>
+      </div>
+      <div class="card" id="colorCard">
+        <div class="card-title">Color Palette</div>
+        <div class="color-swatch-group" id="colorSwatches"></div>
+      </div>
+      <div class="card" id="layoutCard">
+        <div class="lines"></div>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
