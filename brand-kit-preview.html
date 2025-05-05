@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brand Kit Preview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: radial-gradient(circle at top left, #1e1a2a, #0c0b10);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 40px;
+    }
+    p {
+      margin-top: 4px;
+      color: #aaa;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      margin: 60px auto;
+      max-width: 1200px;
+      width: 100%;
+    }
+    .panel {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+    .input-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    label {
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+    input[type="text"] {
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+    }
+    input[type="color"] {
+      height: 48px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 20px;
+      background: #7B4DE7;
+      color: white;
+      font-size: 1rem;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(123, 77, 231, 0.4);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+    .brand-name-preview {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .tagline-preview {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #ccc;
+    }
+    .color-swatch {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin: 8px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Build your brand in real time</h1>
+  <p>Enter your brand name, pick a color, and see instant previews of your assets.</p>
+  <div class="container">
+    <div class="panel input-panel">
+      <label>Brand name</label>
+      <input type="text" id="brandName" placeholder="e.g. Twenty Concepts" />
+      <label>Tagline</label>
+      <input type="text" id="tagline" placeholder="e.g. Glow naturally" />
+      <label>Brand color</label>
+      <input type="color" id="primaryColor" value="#7b4de7" />
+      <button onclick="updateBrand()">Update</button>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="brand-name-preview" id="previewBrand">Your Brand</div>
+        <div class="tagline-preview" id="previewTagline">Your tagline</div>
+      </div>
+      <div class="card">
+        <div style="font-size: 2rem;" id="previewFont">T</div>
+        <div class="tagline-preview" id="previewFontTagline">Your tagline</div>
+      </div>
+      <div class="card">
+        <div><strong>Color Palette</strong></div>
+        <div id="colorPalette">
+          <span class="color-swatch" style="background:#7b4de7"></span>
+          <span class="color-swatch" style="background:#a78bfa"></span>
+          <span class="color-swatch" style="background:#c4b5fd"></span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="width: 60%; height: 2px; background: #bbb; margin: 8px auto;"></div>
+        <div style="width: 70%; height: 2px; background: #bbb; margin: 8px auto;"></div>
+        <div style="width: 50%; height: 2px; background: #bbb; margin: 8px auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateBrand() {
+      const name = document.getElementById('brandName').value || 'Your Brand';
+      const tagline = document.getElementById('tagline').value || 'Your tagline';
+      const color = document.getElementById('primaryColor').value;
+
+      document.getElementById('previewBrand').textContent = name;
+      document.getElementById('previewTagline').textContent = tagline;
+      document.getElementById('previewBrand').style.color = color;
+
+      document.getElementById('previewFont').style.color = color;
+      document.getElementById('previewFontTagline').textContent = tagline;
+
+      const palette = document.getElementById('colorPalette');
+      palette.innerHTML = '';
+      for (let i = 0; i < 3; i++) {
+        const swatch = document.createElement('span');
+        swatch.className = 'color-swatch';
+        swatch.style.background = color;
+        palette.appendChild(swatch);
+      }
+    }
+  </script>
+</body>
+</html>
